@@ -1,2 +1,29 @@
 # AndroidReflectKit
 反射操作封装
+## Import
+[JitPack](https://jitpack.io/)
+
+Add it in your project's build.gradle at the end of repositories:
+
+```gradle
+repositories {
+  // ...
+  maven { url "https://jitpack.io" }
+}
+```
+
+Step 2. Add the dependency in the form
+
+```gradle
+dependencies {
+  compile 'com.github.vilyever:AndroidReflectKit:1.0.0'
+}
+```
+
+## Usage
+```java
+ArrayList<Field> fields = VDReflectKit.getFields(this.getClass());
+```
+## License
+
+[MIT license](LICENSE)
