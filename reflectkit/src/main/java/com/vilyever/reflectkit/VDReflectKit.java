@@ -55,7 +55,7 @@ public class VDReflectKit {
             for (int i = 0; i < length; i++) {
                 Field field = fields[i];
                 if (exclusionDelegate == null
-                        || !exclusionDelegate.shouldExclusde(field)) {
+                        || !exclusionDelegate.shouldExclude(field)) {
                     fieldList.add(index++, field);
                 }
             }
@@ -70,7 +70,7 @@ public class VDReflectKit {
 
     /* #Interfaces */
     public interface FieldsExclusionDelegate {
-        boolean shouldExclusde(Field field);
+        boolean shouldExclude(Field field);
     }
      
     /* #Annotations @interface */    
