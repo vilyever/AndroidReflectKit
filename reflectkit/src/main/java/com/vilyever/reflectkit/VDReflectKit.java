@@ -1,6 +1,7 @@
 package com.vilyever.reflectkit;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 /**
@@ -66,13 +67,59 @@ public class VDReflectKit {
         return fieldList;
     }
 
+    public static ArrayList<Method> getMethods(Class<?> clazz) {
+        return getMethods(clazz, clazz, null);
+    }
+
+    public static ArrayList<Method> getMethods(Class<?> clazz, Class<?> ancestorClazz) {
+        return getMethods(clazz, ancestorClazz, null);
+    }
+
+    public static ArrayList<Method> getMethods(Class<?> clazz, MethodsExclusionDelegate exclusionDelegate) {
+        return getMethods(clazz, clazz, exclusionDelegate);
+    }
+
+    /**
+     *
+     * @param clazz 当前类
+     * @param ancestorClazz 追溯到父类
+     * @param exclusionDelegate 排除的属性字段
+     * @return 属性字段集合
+     */
+    public static ArrayList<Method> getMethods(Class<?> clazz, Class<?> ancestorClazz, MethodsExclusionDelegate exclusionDelegate) {
+        ArrayList<Method> methodList = new ArrayList<Method>();
+
+        Class<?> cls = clazz;
+
+        while (cls != ancestorClazz.getSuperclass()) {
+            Method[] methods = cls.getDeclaredMethods();
+            int index = 0;
+            int length = methods.length;
+            for (int i = 0; i < length; i++) {
+                Method method = methods[i];
+                if (exclusionDelegate == null
+                        || !exclusionDelegate.shouldExclude(method)) {
+                    methodList.add(index++, method);
+                }
+            }
+
+            cls =  cls.getSuperclass();
+        }
+
+        return methodList;
+    }
+
     /* #Classes */
 
     /* #Interfaces */
     public interface FieldsExclusionDelegate {
         boolean shouldExclude(Field field);
     }
-     
+
+    public interface MethodsExclusionDelegate {
+        boolean shouldExclude(Method method);
+    }
+
     /* #Annotations @interface */    
     
     /* #Enums */
