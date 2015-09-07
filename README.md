@@ -16,13 +16,14 @@ Step 2. Add the dependency in the form
 
 ```gradle
 dependencies {
-  compile 'com.github.vilyever:AndroidReflectKit:1.0.1'
+  compile 'com.github.vilyever:AndroidReflectKit:1.0.2'
 }
 ```
 
 ## Usage
 ```java
 ArrayList<Field> fields = VDReflectKit.getFields(this.getClass());
+ArrayList<Method> fields = VDReflectKit.getMethods(this.getClass());
 ```
 
 ## License
