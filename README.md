@@ -23,6 +23,7 @@ dependencies {
 ## Usage
 ```java
 ArrayList<Field> fields = VDReflectKit.getFields(this.getClass());
+ArrayList<Method> fields = VDReflectKit.getMethods(this.getClass());
 ```
 
 ## License
