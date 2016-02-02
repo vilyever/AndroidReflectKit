@@ -12,12 +12,16 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String test;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ArrayList<Field> fields = VDReflectKit.getFields(this.getClass());
+
+        System.out.println("fields " + fields);
     }
 
     @Override
