@@ -5,13 +5,13 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 /**
- * VDReflectKit
+ * ReflectKit
  * AndroidReflectKit <com.vilyever.reflectkit>
  * Created by vilyever on 2015/8/18.
  * Feature:
  */
-public class VDReflectKit {
-    private final VDReflectKit self = this;
+public class ReflectKit {
+    private final ReflectKit self = this;
 
     /* Public Methods */
     /** @see #getFields(Class, FieldsExclusionDelegate) */
